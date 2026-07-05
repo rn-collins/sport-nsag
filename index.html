@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPORT — Nervous-System-Aware Athletic Governance | NSAG Applied</title>
+  <meta name="description" content="NSAG for Sport adapts the 14-dimension Nervous-System-Aware Governance framework to athletic institutions. The athlete's nervous system is governed — the question is by what." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --nsag: #4D45A8;
+      --nsag-light: #6B63C4;
+      --nsag-pale: #EEF0FF;
+      --bg: #F6F3EC;
+      --text: #1C1B1F;
+      --text-muted: #5A5869;
+      --border: #D8D5CE;
+      --white: #FFFFFF;
+      --brand: #1B6B4A;
+      --brand-light: #2A8560;
+      --brand-pale: #EEF5F1;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--brand);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-back {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      color: var(--nsag);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-back:hover {
+      color: var(--nsag-light);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background-color: var(--brand);
+      color: var(--white);
+      padding: 6rem 2rem 5rem;
+    }
+
+    .hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+      display: inline-block;
+    }
+
+    .hero .section-label {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-sub {
+      font-family: 'Manrope', sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.82);
+      max-width: 640px;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border-radius: 3px;
+      transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-hero {
+      background-color: var(--white);
+      color: var(--brand);
+    }
+
+    .btn-hero:hover {
+      background-color: var(--brand-pale);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .btn-brand {
+      background-color: var(--brand);
+      color: var(--white);
+    }
+
+    .btn-brand:hover {
+      background-color: var(--brand-light);
+      box-shadow: 0 4px 16px rgba(27, 107, 74, 0.28);
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background-color: var(--white);
+      padding: 5rem 2rem;
+    }
+
+    .about-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .about .section-label {
+      color: var(--brand);
+    }
+
+    .about h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 2rem;
+      letter-spacing: -0.01em;
+    }
+
+    .about p {
+      font-family: 'Manrope', sans-serif;
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 1.4rem;
+      line-height: 1.8;
+    }
+
+    .about p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── OFFER ── */
+    .offer {
+      background-color: var(--bg);
+      padding: 5rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .offer-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .offer .section-label {
+      color: var(--brand);
+    }
+
+    .offer h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+
+    .offer-desc {
+      font-family: 'Manrope', sans-serif;
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 2.75rem;
+      max-width: 580px;
+    }
+
+    .pricing-table {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+      background-color: var(--white);
+    }
+
+    .pricing-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pricing-row:last-child {
+      border-bottom: none;
+    }
+
+    .pricing-row:nth-child(even) {
+      background-color: var(--brand-pale);
+    }
+
+    .pricing-tier {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    .pricing-amount {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--brand);
+      white-space: nowrap;
+      margin-left: 1rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background-color: #1C1B1F;
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    footer p {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.83rem;
+      color: rgba(255, 255, 255, 0.45);
+      line-height: 1.9;
+    }
+
+    footer a {
+      color: rgba(255, 255, 255, 0.65);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav {
+        padding: 0 1.25rem;
+      }
+
+      .hero {
+        padding: 4rem 1.25rem 3.5rem;
+      }
+
+      .about,
+      .offer {
+        padding: 3.5rem 1.25rem;
+      }
+
+      .pricing-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+        padding: 1rem 1.25rem;
+      }
+
+      .pricing-amount {
+        margin-left: 0;
+      }
+
+      footer {
+        padding: 2rem 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-brand">SPORT</a>
+    <a href="https://nsag-site.vercel.app" class="nav-back">← NSAG</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="section-label">NSAG for Sport</span>
+      <h1>The Athlete's Nervous System Is Governed. The Question Is By What.</h1>
+      <p class="hero-sub">Sports organizations make hundreds of decisions that directly regulate how athletes' nervous systems function — scheduling, environment, travel, recovery culture, media exposure. Most have no governance framework for those effects.</p>
+      <a href="https://outlook.office.com/bookwithme/user/3ff7c8299177431a8fc2b099238c5e43@northeastern.edu?anonymous&ismsaljsauthenabled&ep=plink" class="btn btn-hero">Book a Discovery Call</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="about-inner">
+      <span class="section-label">About</span>
+      <h2>Performance Is a Nervous System Output.</h2>
+      <p>Athletic performance is a nervous system output. Sleep deprivation, chronic travel stress, facility design, and organizational culture are not soft factors — they are inputs to a biological system that produces wins, recoveries, and careers. Governing them intentionally is a performance advantage.</p>
+      <p>NSAG for Sport adapts the 14-dimension Nervous-System-Aware Governance framework to the specific pressures of athletic institutions: college programs, professional teams, performance facilities, and governing bodies. The assessment produces a prioritized roadmap — not a wellness program.</p>
+      <p>The first pitch targets are already identified. The pipeline includes F1 and the LA28 Olympics. The framework exists. What's missing is the institutional will to treat athlete nervous system governance as a governance question, not a coaching one.</p>
+    </div>
+  </section>
+
+  <!-- OFFER -->
+  <section class="offer">
+    <div class="offer-inner">
+      <span class="section-label">The Engagement</span>
+      <h2>The Athlete's Nervous System Audit</h2>
+      <p class="offer-desc">Full assessment of your organization's environment, scheduling, recovery protocols, and institutional culture against the NSAG 14-dimension framework. Delivers a prioritized 90-day governance roadmap.</p>
+
+      <div class="pricing-table">
+        <div class="pricing-row">
+          <span class="pricing-tier">College Athletic Department</span>
+          <span class="pricing-amount">$8,500</span>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-tier">Pro Team / Performance Facility</span>
+          <span class="pricing-amount">$15,000</span>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-tier">League Engagement (3+ teams)</span>
+          <span class="pricing-amount">$35,000+</span>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-tier">Ongoing Advisory Retainer</span>
+          <span class="pricing-amount">$3,500/month</span>
+        </div>
+      </div>
+
+      <a href="https://outlook.office.com/bookwithme/user/3ff7c8299177431a8fc2b099238c5e43@northeastern.edu?anonymous&ismsaljsauthenabled&ep=plink" class="btn btn-brand">Book a Discovery Call</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p>SPORT is an NSAG applied brand. <a href="https://nsag-site.vercel.app">nsag-site.vercel.app</a> · RN Collins, M.S., J.D. Candidate · collins.ra@northeastern.edu</p>
+    </div>
+  </footer>
+
+</body>
+</html>
