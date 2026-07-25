@@ -399,5 +399,132 @@
     </div>
   </footer>
 
+
+<section style="background:#f9f7f4;padding:5rem 2rem;border-top:2px solid #1B7A68">
+  <div style="max-width:680px;margin:0 auto">
+    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#1B7A68;margin:0 0 .75rem">Free Diagnostic</p>
+    <h2 style="font-size:1.8rem;font-weight:700;margin:0 0 .75rem">Readiness Assessment</h2>
+    <p style="color:#555;margin:0 0 2.5rem;line-height:1.7">Five questions. Instant result. No email required.</p>
+    <div id="rd-quiz-sport">
+      <div id="rd-questions-sport"></div>
+      <button id="rd-submit-sport" onclick="rdSubmit_sport()" style="display:none;background:#1B7A68;color:#fff;border:none;padding:.75rem 2rem;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;cursor:pointer;border-radius:2px;margin-top:1.5rem">Get My Score</button>
+    </div>
+  </div>
+</section>
+<script>
+(function() {
+  var qs = [{"q": "Does your organization document the neurobiological rationale for scheduling and recovery decisions in athlete welfare policies?", "opts": [{"label": "No \u2014 scheduling is driven by competitive and logistical requirements", "score": 0}, {"label": "We consider recovery science informally", "score": 1}, {"label": "Yes \u2014 we have documented policies that cite evidence on nervous system recovery", "score": 2}]}, {"q": "Can your staff cite primary research when asked why specific load management or environment design decisions were made?", "opts": [{"label": "No \u2014 we rely on coaching experience and general best practices", "score": 0}, {"label": "For some decisions, with informal references", "score": 1}, {"label": "Yes \u2014 we maintain evidenced decision rationale for athlete welfare policies", "score": 2}]}, {"q": "How does your organization assess whether its athlete development environment is producing intended cognitive and psychological outcomes?", "opts": [{"label": "We track performance outcomes and injury rates only", "score": 0}, {"label": "We use informal assessments and athlete feedback", "score": 1}, {"label": "Through structured assessments with documented outcome measures", "score": 2}]}, {"q": "Does your athlete welfare policy distinguish between stress that promotes adaptation and stress that impairs nervous system function?", "opts": [{"label": "No \u2014 we manage load as a single variable", "score": 0}, {"label": "We discuss this in coaching contexts but have no documented framework", "score": 1}, {"label": "Yes \u2014 our policies operationalize the distinction between adaptive and impairing stress", "score": 2}]}, {"q": "When your organization makes decisions that affect athlete cognitive and psychological environments (media access, travel schedules, facility design), is the nervous system impact formally assessed?", "opts": [{"label": "No \u2014 these decisions are made on operational and performance grounds", "score": 0}, {"label": "Sometimes, for high-profile welfare situations", "score": 1}, {"label": "Yes \u2014 nervous system impact is a required assessment for athlete environment decisions", "score": 2}]}];
+  var answers_sport = {};
+  var container = document.getElementById('rd-questions-sport');
+  if (!container) return;
+  qs.forEach(function(q, i) {
+    var div = document.createElement('div');
+    div.style.cssText = 'margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid #ddd';
+    div.innerHTML = '<p style="font-weight:600;margin:0 0 1rem">' + (i+1) + '. ' + q.q + '</p>' +
+      q.opts.map(function(o, j) {
+        return '<label style="display:block;padding:.6rem .8rem;margin-bottom:.4rem;border:1.5px solid #ddd;border-radius:3px;cursor:pointer;font-size:.88rem"><input type="radio" name="qsport'+i+'" value="'+j+'" style="margin-right:.6rem" onchange="rdAns_sport('+i+','+o.score+')"> '+o.label+'</label>';
+      }).join('');
+    container.appendChild(div);
+  });
+  document.getElementById('rd-submit-sport').style.display = 'block';
+})();
+
+window.rdAns_sport = function(qi, score) { rdAnswers_sport[qi] = score; };
+var rdAnswers_sport = {};
+
+window.rdSubmit_sport = function() {
+  var total = 0, answered = 0;
+  for (var k in rdAnswers_sport) { total += rdAnswers_sport[k]; answered++; }
+  if (answered < 5) { alert('Please answer all 5 questions.'); return; }
+  var pct = Math.round((total / 10) * 100);
+  var level = pct >= 80 ? 'Advanced' : pct >= 50 ? 'Developing' : 'Early Stage';
+  var color = pct >= 80 ? '#1B7A68' : pct >= 50 ? '#B8842A' : '#c0392b';
+  var msgs = {
+    high: 'Your Sport NSAG governance is evidence-aware. The opportunity is systematizing what you already know intuitively into a documented, transferable framework.',
+    mid: 'You have foundational awareness but governance decisions are likely still being made on intuition. The gap between knowing and evidencing is where NSAG work lives.',
+    low: 'Most Sport NSAG organizations score here. Governance decisions affecting the nervous system are being made without a framework for identifying, measuring, or communicating their effects.'
+  };
+  var msg = pct >= 80 ? msgs.high : pct >= 50 ? msgs.mid : msgs.low;
+  document.getElementById('rd-quiz-sport').innerHTML =
+    '<div style="text-align:center;padding:2rem">' +
+    '<div style="font-size:3rem;font-weight:800;color:'+color+'">'+pct+'%</div>' +
+    '<p style="font-size:1.1rem;font-weight:600;margin:.5rem 0;color:'+color+'">'+level+'</p>' +
+    '<p style="color:#555;line-height:1.7;max-width:520px;margin:1rem auto">'+msg+'</p>' +
+    '<a href="mailto:collins.ra@northeastern.edu?subject=Sport NSAG+Readiness+Diagnostic+'+pct+'%25" style="display:inline-block;margin-top:1.5rem;background:#1B7A68;color:#fff;text-decoration:none;padding:.65rem 1.5rem;font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;border-radius:2px">Get the Full Report</a>' +
+    '</div>';
+};
+</script>
+<section style="padding:5rem 2rem;border-top:1px solid #e8e4e0">
+  <div style="max-width:780px;margin:0 auto">
+    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#1B7A68;margin:0 0 .75rem">Signal vs. Noise</p>
+    <h2 style="font-size:1.6rem;font-weight:700;margin:0 0 2rem">What Is Worth Paying Attention To</h2>
+    <div style="display:grid;gap:1.25rem"><div style="border-left:3px solid #1B7A68;padding-left:1.25rem"><p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#1B7A68;margin:0 0 .3rem">Signal</p><p style="font-weight:600;margin:0 0 .3rem">Sleep restriction research in elite athletes (2020-2024)</p><p style="color:#666;font-size:.85rem;margin:0;line-height:1.6">Controlled studies on sleep restriction in athletic populations have established that cognitive performance impairment precedes physical performance impairment — meaning athletes are making lower-quality decisions under conditions that still appear physically functional. This has direct governance implications for travel scheduling and early-morning training practices. Primary source: Sleep Medicine Reviews, Frontiers in Sports and Active Living.</p></div><div style="border-left:3px solid #1B7A68;padding-left:1.25rem"><p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#1B7A68;margin:0 0 .3rem">Signal</p><p style="font-weight:600;margin:0 0 .3rem">NCAA mental health framework implementation studies</p><p style="color:#666;font-size:.85rem;margin:0;line-height:1.6">The NCAA mental health framework adoption data provides comparative evidence on which organizational governance changes produce measurable athlete mental health outcomes versus which produce compliance documentation without outcome change. The gap between these categories is large. Primary source: NCAA Sport Science Institute annual reports.</p></div><div style="border-left:3px solid #c0392b;padding-left:1.25rem"><p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#c0392b;margin:0 0 .3rem">Noise</p><p style="font-weight:600;margin:0 0 .3rem">Load monitoring technology vendor claims</p><p style="color:#666;font-size:.85rem;margin:0;line-height:1.6">Wearable and GPS load monitoring vendors publish case studies asserting that their technology improves athlete welfare outcomes. These studies are funded and designed by the vendors and should not be treated as independent evidence. The technology may be useful; the vendor evidence base is not the appropriate source for governance decisions.</p></div><div style="border-left:3px solid #c0392b;padding-left:1.25rem"><p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#c0392b;margin:0 0 .3rem">Noise</p><p style="font-weight:600;margin:0 0 .3rem">Athlete mental health awareness campaigns as governance</p><p style="color:#666;font-size:.85rem;margin:0;line-height:1.6">Awareness campaigns and stigma-reduction initiatives are communication interventions. They do not constitute governance frameworks. An organization can have excellent mental health communication and simultaneously have scheduling, travel, and environment practices that systematically impair athlete nervous system function.</p></div></div>
+  </div>
+</section>
+<section style="padding:5rem 2rem;border-top:1px solid #e8e4e0">
+  <div style="max-width:780px;margin:0 auto">
+    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#1B7A68;margin:0 0 .75rem">Before / After</p>
+    <h2 style="font-size:1.6rem;font-weight:700;margin:0 0 .75rem">What Applying the Framework Looks Like</h2>
+    <p style="color:#555;margin:0 0 2.5rem;line-height:1.7">Hypothetical examples drawn from real decision types in Sport NSAG.</p>
+    <div style="display:grid;gap:1.5rem">
+<div style="border:1.5px solid #ddd;border-radius:4px;overflow:hidden">
+  <div style="padding:1.25rem;background:#fff4f4;border-bottom:1px solid #ddd">
+    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#c0392b;margin:0 0 .3rem">Before</p>
+    <p style="font-weight:600;margin:0 0 .35rem">Travel policy: Athletes fly economy on domestic trips</p>
+    <p style="color:#666;font-size:.85rem;margin:0;line-height:1.6">A sports organization schedules athletes on early-morning economy flights for domestic travel, with training beginning six hours after arrival. The decision is made on budget grounds. No assessment is made of the cognitive and recovery impact on athlete performance and welfare during the following 48 hours.</p>
+  </div>
+  <div style="padding:1.25rem;background:#f0f9f6">
+    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#1B7A68;margin:0 0 .3rem">After NSAG Framework</p>
+    <p style="font-weight:600;margin:0 0 .35rem">Travel policy with documented nervous system impact assessment</p>
+    <p style="color:#555;font-size:.85rem;margin:0;line-height:1.6">The same decision now requires a brief nervous system impact assessment: a 5am departure with a 6-hour recovery window before training creates documented sleep fragmentation effects (cite) that affect decision-making and injury risk (cite). The policy documents the cost-benefit decision explicitly: the organization accepts X% elevated injury risk for $Y in travel savings. The tradeoff is documented rather than invisible.</p>
+  </div>
+</div>
+<div style="border:1.5px solid #ddd;border-radius:4px;overflow:hidden">
+  <div style="padding:1.25rem;background:#fff4f4;border-bottom:1px solid #ddd">
+    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#c0392b;margin:0 0 .3rem">Before</p>
+    <p style="font-weight:600;margin:0 0 .35rem">Athlete development environment: We have a great facility</p>
+    <p style="color:#666;font-size:.85rem;margin:0;line-height:1.6">A sports organization cites facility quality as evidence of its commitment to athlete development. The facility has high-end training equipment and recovery amenities. The cognitive and psychological environment — scheduling density, media access expectations, coach communication patterns — has never been formally assessed.</p>
+  </div>
+  <div style="padding:1.25rem;background:#f0f9f6">
+    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#1B7A68;margin:0 0 .3rem">After NSAG Framework</p>
+    <p style="font-weight:600;margin:0 0 .35rem">Athlete environment assessment with documented cognitive scope</p>
+    <p style="color:#555;font-size:.85rem;margin:0;line-height:1.6">The same organization now conducts a biannual athlete environment assessment that covers physical environment (facility, equipment), schedule environment (load, recovery windows, travel), cognitive environment (information density, decision frequency, role clarity), and social environment (communication patterns, accountability culture). Each dimension is assessed against evidence on nervous system effects and documented with a governance record.</p>
+  </div>
+</div></div>
+  </div>
+</section>
+<section style="padding:5rem 2rem;border-top:1px solid #e8e4e0">
+  <div style="max-width:780px;margin:0 auto">
+    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#1B7A68;margin:0 0 .75rem">Terminology</p>
+    <h2 style="font-size:1.6rem;font-weight:700;margin:0 0 .75rem">Sport NSAG Glossary</h2>
+    <p style="color:#555;margin:0 0 2.5rem;line-height:1.7">Language used precisely in this domain. These distinctions carry real analytical weight.</p>
+    <div><div style="padding:1rem 0;border-bottom:1px solid #eee"><p style="font-weight:700;margin:0 0 .3rem">Allostatic load</p><p style="color:#555;font-size:.88rem;margin:0;line-height:1.6">The cumulative burden of chronic stress and life events on the body and nervous system. In athletes, allostatic load accumulates across training stress, competition stress, travel, media obligations, and life outside sport. Governance frameworks that only measure training load are measuring one input to allostatic load while ignoring the others.</p></div><div style="padding:1rem 0;border-bottom:1px solid #eee"><p style="font-weight:700;margin:0 0 .3rem">Adaptive stress vs. impairing stress</p><p style="color:#555;font-size:.88rem;margin:0;line-height:1.6">Adaptive stress is the stimulus that drives physical and cognitive development — the appropriate application of load relative to recovery capacity. Impairing stress exceeds recovery capacity and degrades function over time. The distinction is not about intensity but about the relationship between load and recovery. Governing bodies that mandate training frequency without mandating recovery standards are governing only one side of this equation.</p></div><div style="padding:1rem 0;border-bottom:1px solid #eee"><p style="font-weight:700;margin:0 0 .3rem">Cognitive performance impairment</p><p style="color:#555;font-size:.88rem;margin:0;line-height:1.6">Reduction in an individual's capacity for attention, decision-making, emotional regulation, and executive function. In athletes, cognitive performance impairment typically precedes measurable physical performance impairment under sleep restriction and overtraining conditions — meaning organizations can be producing cognitively impaired athletes while performance metrics appear stable.</p></div><div style="padding:1rem 0;border-bottom:1px solid #eee"><p style="font-weight:700;margin:0 0 .3rem">Nervous system recovery</p><p style="color:#555;font-size:.88rem;margin:0;line-height:1.6">The process by which the autonomic nervous system returns to parasympathetic (rest-and-digest) dominance after periods of sympathetic (fight-or-flight) activation. Adequate nervous system recovery is distinct from muscular recovery and requires different inputs — primarily sleep quality, psychological safety, and absence of chronic stressors. Many high-performance environments optimize for muscular recovery while inadvertently preventing nervous system recovery.</p></div><div style="padding:1rem 0;border-bottom:1px solid #eee"><p style="font-weight:700;margin:0 0 .3rem">Athlete welfare governance</p><p style="color:#555;font-size:.88rem;margin:0;line-height:1.6">The documented policies, assessment processes, and decision-making frameworks through which a sports organization manages its obligation to the cognitive, psychological, and physical integrity of the athletes in its care. Distinct from athlete welfare communication (statements about values) and athlete welfare programming (wellness initiatives). Governance is the structural accountability layer.</p></div></div>
+  </div>
+</section>
+<section style="background:#1B7A68;color:#fff;padding:4rem 2rem">
+  <div style="max-width:780px;margin:0 auto">
+    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.6);margin:0 0 .75rem">How NSAG Thinks</p>
+    <h2 style="font-size:1.6rem;font-weight:700;margin:0 0 1rem;color:#fff">One Framework. Four Domains.</h2>
+    <p style="color:rgba(255,255,255,.85);line-height:1.8;margin:0 0 2rem;max-width:620px">NSAG applies the same underlying question to every domain: <em>What are the nervous system inputs that governance decisions are actually regulating — and does the governing body know it?</em> The answer changes by domain. The method does not.</p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem">
+      <div style="background:rgba(255,255,255,.1);padding:1.25rem;border-radius:4px">
+        <p style="font-weight:700;color:#fff;margin:0 0 .3rem;font-size:.9rem">NARCH</p>
+        <p style="color:rgba(255,255,255,.75);font-size:.82rem;margin:0;line-height:1.5">Built environments govern cognition, stress, and healing at the architectural level</p>
+      </div>
+      <div style="background:rgba(255,255,255,.1);padding:1.25rem;border-radius:4px">
+        <p style="font-weight:700;color:#fff;margin:0 0 .3rem;font-size:.9rem">WNH</p>
+        <p style="color:rgba(255,255,255,.75);font-size:.82rem;margin:0;line-height:1.5">Clinical and policy guidance governs female nervous system inputs, often without knowing it</p>
+      </div>
+      <div style="background:rgba(255,255,255,.1);padding:1.25rem;border-radius:4px">
+        <p style="font-weight:700;color:#fff;margin:0 0 .3rem;font-size:.9rem">GAPI</p>
+        <p style="color:rgba(255,255,255,.75);font-size:.82rem;margin:0;line-height:1.5">AI agents govern the cognitive and emotional states of every person they interact with</p>
+      </div>
+      <div style="background:rgba(255,255,255,.1);padding:1.25rem;border-radius:4px">
+        <p style="font-weight:700;color:#fff;margin:0 0 .3rem;font-size:.9rem">SPORT</p>
+        <p style="color:rgba(255,255,255,.75);font-size:.82rem;margin:0;line-height:1.5">Sports organizations regulate athlete nervous systems through scheduling, environment, and culture</p>
+      </div>
+    </div>
+  </div>
+</section>
 </body>
 </html>
